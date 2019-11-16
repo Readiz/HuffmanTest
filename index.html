@@ -6,9 +6,9 @@
         <h3>Target String</h3>
         <div style="width:500px; max-height: 200px; overflow-y: scroll" id="target"></div>
         <p></p>
-        <p>Actual size: <span id="actual"></span> bit</p>
-        <p>Normal algorithm: <span id="normal"></span> bit</p>
-        <p>Huffman algorithm: <span id="huffman"></span> bit</p>
+        <p>Actual size: <span id="actual"></span> byte</p>
+        <p>Normal algorithm: <span id="normal"></span> byte</p>
+        <p>Huffman algorithm: <span id="huffman"></span> byte</p>
 
 <script>
 let rnd_string;
@@ -84,9 +84,9 @@ for (let i = 0; i < 65536; i++) {
     huffman_size += huffman_bit_size[rnd_char];
 }
 document.getElementById('target').innerHTML = rnd_string;
-document.getElementById('actual').innerHTML = rnd_string.length * 8;
-document.getElementById('normal').innerHTML = rnd_string.length * 5;
-document.getElementById('huffman').innerHTML = huffman_size;
+document.getElementById('actual').innerHTML = rnd_string.length;
+document.getElementById('normal').innerHTML = rnd_string.length * 5 / 8;
+document.getElementById('huffman').innerHTML = huffman_size / 8;
 
 
 </script>
