@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>Huffman Test</title>
+    </head>
+    <body>
+        <h3>Target String</h3>
+        <div style="width:500px; max-height: 200px; overflow-y: scroll" id="target"></div>
+        <p></p>
+        <p>Actual size: <span id="actual"></span> bit</p>
+        <p>Normal algorithm: <span id="normal"></span> bit</p>
+        <p>Huffman algorithm: <span id="huffman"></span> bit</p>
+
+<script>
+let rnd_string;
+let rnd_array_full = [];
+let char_freq = {
+    a: 81, 
+    b: 14, 
+    c: 27, 
+    d: 43, 
+    e: 120, 
+    f: 23, 
+    g: 20, 
+    h: 59, 
+    i: 73,
+    j: 1, 
+    k: 6, 
+    l: 40, 
+    m: 26, 
+    n: 69, 
+    o: 76,
+    p: 18,
+    q: 1,
+    r: 60,
+    s: 63,
+    t: 91,
+    u: 29,
+    v: 11,
+    w: 21,
+    x: 1,
+    y: 21,
+    z: 1,
+    ' ': 140
+};
+let huffman_bit_size = {
+    a: 4, 
+    b: 5, 
+    c: 5, 
+    d: 5, 
+    e: 3, 
+    f: 5, 
+    g: 5, 
+    h: 4, 
+    i: 4,
+    j: 9, 
+    k: 7, 
+    l: 5, 
+    m: 5, 
+    n: 4, 
+    o: 4,
+    p: 5,
+    q: 9,
+    r: 4,
+    s: 4,
+    t: 4,
+    u: 5,
+    v: 6,
+    w: 5,
+    x: 9,
+    y: 5,
+    z: 9,
+    ' ': 3
+};
+let huffman_size = 0;
+for (key in char_freq) {
+    for (let i = 0; i < char_freq[key]; i++) {
+        rnd_array_full.push(key);
+    }
+}
+
+for (let i = 0; i < 65536; i++) {
+    let rnd_char = rnd_array_full[Math.floor(Math.random() * rnd_array_full.length)];
+    rnd_string += rnd_char
+    huffman_size += huffman_bit_size[rnd_char];
+}
+document.getElementById('target').innerHTML = rnd_string;
+document.getElementById('actual').innerHTML = rnd_string.length * 8;
+document.getElementById('normal').innerHTML = rnd_string.length * 5;
+document.getElementById('huffman').innerHTML = huffman_size;
+
+
+</script>
+    </body>
+</html>
